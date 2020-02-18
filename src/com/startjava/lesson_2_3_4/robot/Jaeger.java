@@ -1,4 +1,4 @@
-package com.startjava.lesson_2_3.robot;
+package com.startjava.lesson_2_3_4.robot;
 
 import java.util.Random;
 
@@ -64,11 +64,11 @@ public class Jaeger {
         System.out.println("You have moved " + speed + " steps closer");
     }
 
-    public boolean scanKaiju() {
+    public void scanKaiju() {
         Random randScan = new Random();
         boolean scanner = randScan.nextBoolean();
         System.out.println();
-        if(scanner == true) {
+        if(scanner) {
             System.out.println("Kaiju detected! Need to use weapons!");
             System.out.println();
             move();
@@ -77,19 +77,17 @@ public class Jaeger {
         } else {
             System.out.println("Kaiju not found");
         }
-        return scanner;
     }
     
-    public boolean useWeapon() {
+    public void useWeapon() {
         Random randAtack = new Random();
         boolean atack = randAtack.nextBoolean();
         System.out.println("Open fire!");
         System.out.println();
-        if(atack == true) {
+        if(atack) {
             System.out.println("Kaiju is destroyed! Congratulation!");
         } else {
             System.out.println("Jaeger is destroyed!");
         }
-        return atack;
     }
 }
