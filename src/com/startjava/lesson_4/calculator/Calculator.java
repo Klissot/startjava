@@ -2,34 +2,11 @@ package com.startjava.lesson_4.calculator;
 
 public class Calculator {
     private int firstValue, secondValue, result;
-    private String operations;
 
-    public int getFirstValue() {
-        return firstValue;
-    }
-
-    public void setFirstValue(int firstValue) {
-        this.firstValue = firstValue;
-    }
-
-    public void setSecondValue(int secondValue) {
-        this.secondValue = secondValue;
-    }
-
-    public void setResult(int result) {
-        this.result = result;
-    }
-
-    public String getOperations() {
-        return operations;
-    }
-
-    public void setOperations(String operations) {
-        this.operations = operations;
-    }
-
-    public void calculate() {
-        switch (operations) {
+    public void calculate(String mathOperation[]) {
+        firstValue = Integer.parseInt(mathOperation[0]);
+        secondValue = Integer.parseInt(mathOperation[2]);
+        switch (mathOperation[1]) {
             case "+":
                 result = firstValue + secondValue;
                 System.out.println("Результат = " + result);
@@ -59,6 +36,4 @@ public class Calculator {
                 break;
         }
     }
-
-
 }
