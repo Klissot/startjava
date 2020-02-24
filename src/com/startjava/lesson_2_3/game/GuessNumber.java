@@ -1,10 +1,9 @@
-package com.startjava.lesson_2_3_4.game;
+package com.startjava.lesson_2_3.game;
 
 import java.util.Scanner;
 
 public class GuessNumber {
     Scanner scan = new Scanner(System.in);
-    private int selectedNumber;
     private Player player1;
     private Player player2;
     
@@ -15,7 +14,7 @@ public class GuessNumber {
 
     public void runGame() {
         System.out.println("The computer selected a number. Guessed him!");
-        selectedNumber = (int)(Math.random()*101);
+        int selectedNumber = (int) (Math.random() * 101);
         do {
             System.out.println("First player, enter a number");
             player1.setNumber(scan.nextInt());
