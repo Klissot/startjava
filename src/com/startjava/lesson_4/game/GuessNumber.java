@@ -1,6 +1,5 @@
 package com.startjava.lesson_4.game;
 
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class GuessNumber {
@@ -17,46 +16,45 @@ public class GuessNumber {
         System.out.println("Компьютер загадал число, попробуйте отгадать");
         System.out.println("Внимание! У вас есть только 10 попыток");
         int selectedNumber = (int) (Math.random() * 101);
-        do {
-            for(int i = 0; i < player1.number.length; i++) {
-                System.out.print("Первый игрок, введите число: ");
-                player1.number[i] = scan.nextInt();
-                if (player1.number[i] < selectedNumber) {
-                    System.out.println("Введенное число меньше загаданного, попробуйте еще раз!");
-                    if(i == player1.number.length - 1) {
-                        System.out.println("У игрока  " + player1.getName() + " закончились попытки");
-                    }
-                } else if (player1.number[i] > selectedNumber) {
-                    System.out.println("Введенное число больше загаданного, попробуйте еще раз!");
-                    if(i == player1.number.length - 1) {
-                        System.out.println("У игрока  " + player1.getName() + " закончились попытки");
-                    }
-                } else {
-                    int[] numberOfAttemptsPlayer1 = Arrays.copyOf(player1.number, i+1);
-                    System.out.println("Поздравляем, игрок " + player1.getName() + " угадал число " + selectedNumber + " с " + numberOfAttemptsPlayer1.length + " попыток");
+
+        for (int i = 0; i < 10; i++) {
+            System.out.print("Первый игрок, введите число: ");
+            player1.setEnteredNumber(i, scan.nextInt());
+            if (player1.getEnteredNumber(i) < selectedNumber) {
+                System.out.println("Введенное число меньше загаданного!");
+            } else if (player1.getEnteredNumber(i) > selectedNumber) {
+                System.out.println("Введенное число больше загаданного!");
+            } else {
+                if (i == 9) {
+                    System.out.println("Игрок " + player1.getName() + " победил!");
+                    player1.outputEnteredNumber();
+                    player2.outputEnteredNumber();
                     break;
-                }
-                System.out.print("Второй игрок, введите число: ");
-                player2.number[i] = scan.nextInt();
-                if (player2.number[i] < selectedNumber) {
-                    System.out.println("Введенное число меньше загаданного, попробуйте еще раз!");
-                    if(i == player2.number.length - 1) {
-                        System.out.println("У игрока " + player2.getName() + " закончились попытки");
-                    }
-                } else if (player2.number[i] > selectedNumber) {
-                    System.out.println("Введенное число больше загаданного, попробуйте еще раз!");
-                    if(i == player2.number.length - 1) {
-                        System.out.println("У игрока " + player2.getName() + " закончились попытки");
-                    }
                 } else {
-                    int[] numberOfAttemptsPlayer2 = Arrays.copyOf(player2.number, i+1);
-                    System.out.println("Поздравляем, игрок " + player2.getName() + " угадал число " + selectedNumber + " с " + numberOfAttemptsPlayer2.length + " попыток");
-                    break;
+                    player1.numberOfAttempts(i, selectedNumber);
                 }
             }
-            System.out.println("Первый игрок ввел числа - " + Arrays.toString(player1.number));
-            System.out.println("Второй игрок ввел числа - " + Arrays.toString(player2.number));
-            break;
-        } while(true);
+
+            System.out.print("Второй игрок, введите число: ");
+            player2.setEnteredNumber(i, scan.nextInt());
+            if (player2.getEnteredNumber(i) < selectedNumber) {
+                System.out.println("Введенное число меньше загаданного!");
+            } else if (player2.getEnteredNumber(i) > selectedNumber) {
+                System.out.println("Введенное число больше загаданного!");
+            } else {
+                if (i == 9) {
+                    System.out.println("Игрок " + player2.getName() + " победил!");
+                    player1.outputEnteredNumber();
+                    player2.outputEnteredNumber();
+                    break;
+                } else {
+                    player2.numberOfAttempts(i, selectedNumber);
+                }
+            }
+            if (i == 9) {
+                player1.outputEnteredNumber();
+                player2.outputEnteredNumber();
+            }
+        }
     }
 }
