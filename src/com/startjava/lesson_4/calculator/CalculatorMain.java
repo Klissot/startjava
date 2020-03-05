@@ -10,9 +10,8 @@ public class CalculatorMain {
         String answer;
         do {
             System.out.print("Введите математическое выражение: ");
-            String operation = scan.nextLine();
-            String[] mathOperation = operation.split(" ");
-            calc.calculate(mathOperation);
+            String[] mathExpression = scan.nextLine().split(" ");
+            calc.calculate(mathExpression);
             do {
                 System.out.println("Хотите продолжить? [Да / Нет]");
                 answer = scan.nextLine();
