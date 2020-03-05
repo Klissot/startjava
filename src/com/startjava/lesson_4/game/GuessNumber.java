@@ -21,7 +21,6 @@ public class GuessNumber {
             for(int i = 0; i < player1.number.length; i++) {
                 System.out.print("Первый игрок, введите число: ");
                 player1.number[i] = scan.nextInt();
-                if (i player1.number.length)
                 if (player1.number[i] < selectedNumber) {
                     System.out.println("Введенное число меньше загаданного, попробуйте еще раз!");
                     if(i == player1.number.length - 1) {
