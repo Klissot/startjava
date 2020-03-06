@@ -29,6 +29,7 @@ public class Player {
 
     public void outputEnteredNumber() {
         System.out.println("Игрок " + name + " ввел числа: " + Arrays.toString(enteredNumber));
+        Arrays.fill(enteredNumber, 0);
     }
 
     public void numberOfAttempts(int count, int selectedNumber) {
