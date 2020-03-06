@@ -16,6 +16,8 @@ public class GuessNumberMain {
         String answer;
         do {
             gn.runGame();
+            player1.zeroingEnteredsNubers();
+            player2.zeroingEnteredsNubers();
             do {
                 System.out.println("Хотите продолжить?");
                 answer = scan.next();
