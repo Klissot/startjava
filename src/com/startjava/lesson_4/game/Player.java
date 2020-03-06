@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class Player {
     private String name;
-    private int[] enteredNumber = new int[10];
+    private int[] enteredNumbers = new int[10];
 
     public Player(String name) {
         this.name = name;
@@ -14,31 +14,24 @@ public class Player {
         return name;
     }
 
-    public int getEnteredNumber(int i) {
-            return enteredNumber[i];
+    public int[] getEnteredNumbers() {
+            return enteredNumbers;
     }
 
-    public void setEnteredNumber(int count, int numberOfPlayer) {
-        if (count != enteredNumber.length - 1) {
-            enteredNumber[count] = numberOfPlayer;
-        } else {
-            enteredNumber[count] = numberOfPlayer;
-            System.out.println("У игрока " + name + " закончились попытки");
-        }
+    public int getEnteredNumbers(int i) {
+        return enteredNumbers[i];
     }
 
-    public void outputEnteredNumber() {
-        System.out.println("Игрок " + name + " ввел числа: " + Arrays.toString(enteredNumber));
-        Arrays.fill(enteredNumber, 0);
+    public void setEnteredNumbers(int count, int number) {
+        enteredNumbers[count] = number;
     }
 
-    public void numberOfAttempts(int count, int selectedNumber) {
-        int[] numberOfAttempts = Arrays.copyOf(enteredNumber, count + 1);
-        if (numberOfAttempts.length == enteredNumber.length) {
-            System.out.println("Игрок " + name + " угадал загаданное число " + selectedNumber + " с " + numberOfAttempts.length + " попытки!");
-            outputEnteredNumber();
-        } else {
-            System.out.println("Игрок " + name + " угадал загаданное число " + selectedNumber + " с " + numberOfAttempts.length + " попытки!");
-        }
+    public int[] outputEnteredNumbers(int i) {
+            int[] outputNumbers = Arrays.copyOf(enteredNumbers, i);
+            return outputNumbers;
+    }
+
+    public void zeroingEnteredsNubers() {
+        Arrays.fill(enteredNumbers, 0);
     }
 }
