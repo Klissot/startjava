@@ -33,6 +33,7 @@ public class GuessNumber {
                 } else {
                     System.out.println("Поздравляем! Игрок " + player1.getName() + " угадал число " + selectedNumber + " c " + sum + " попытки!");
                 }
+                player1.zeroingOfEnteredNumbers(i);
                 break;
             }
             if (i == 9) {
@@ -53,6 +54,7 @@ public class GuessNumber {
                 } else {
                     System.out.println("Поздравляем! Игрок " + player2.getName() + " угадал число " + selectedNumber + " c " + sum + " попытки");
                 }
+                player2.zeroingOfEnteredNumbers(i);
                 break;
             }
             if (i == 9) {
@@ -61,8 +63,8 @@ public class GuessNumber {
                 System.out.println("Первый игрок: " + Arrays.toString(player1.getEnteredNumbers(i)));
                 System.out.println("Второй игрок: " + Arrays.toString(player2.getEnteredNumbers(i)));
             }
+            player1.zeroingOfEnteredNumbers(i);
+            player2.zeroingOfEnteredNumbers(i);
         }
-        player1.zeroingOfEnteredNumbers();
-        player2.zeroingOfEnteredNumbers();
     }
 }
