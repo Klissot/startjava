@@ -22,12 +22,12 @@ public class Player {
         return enteredNumbers[value];
     }
 
-    public void zeroingOfEnteredNumbers(int value) {
-        Arrays.fill(enteredNumbers, 0, value + 1, 0);
-    }
-
     public void setEnteredNumber(int value, int number) {
         enteredNumbers[value] = number;
+    }
+
+    public void zeroingOfEnteredNumbers(int value) {
+        Arrays.fill(enteredNumbers, 0, value + 1, 0);
     }
 
 }
