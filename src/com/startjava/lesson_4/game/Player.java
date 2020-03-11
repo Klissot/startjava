@@ -14,16 +14,16 @@ public class Player {
         return name;
     }
 
-    public int[] getEnteredNumbers(int i) {
-        return Arrays.copyOf(enteredNumbers, i + 1);
-    }
-
     public int getEnteredNumber(int i) {
         return enteredNumbers[i];
     }
 
     public void setEnteredNumber(int i, int number) {
         enteredNumbers[i] = number;
+    }
+
+    public int[] getEnteredNumbers(int i) {
+        return Arrays.copyOf(enteredNumbers, i + 1);
     }
 
     public void zeroingOfEnteredNumbers(int i) {
