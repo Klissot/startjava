@@ -20,8 +20,7 @@ public class GuessNumber {
         int selectedNumber = (int) (Math.random() * 101);
         for (int i = 0; i < 10; i++) {
             int sum = i + 1;
-            System.out.print("Первый игрок, введите число: ");
-            player1.setEnteredNumber(i, scan.nextInt());
+            player1.setEnteredNumber(i, enterNumber(player1.getName()));
             check(player1.getEnteredNumber(i), selectedNumber);
             if (check == true) {
                 if (i != 9) {
@@ -39,9 +38,7 @@ public class GuessNumber {
                     System.out.println("У игрока " + player2.getName() + " закончились попытки!");
                 }
             }
-
-            System.out.print("Второй игрок, введите число: ");
-            player2.setEnteredNumber(i, scan.nextInt());
+            player2.setEnteredNumber(i, enterNumber(player2.getName()));
             check(player2.getEnteredNumber(i), selectedNumber);
             if (check == true) {
                 if (i != 9) {
@@ -67,13 +64,22 @@ public class GuessNumber {
         }
     }
 
+    private int enterNumber(String name) {
+        System.out.print("Игрок " + name + " введите число: ");
+        int number = scan.nextInt();
+        return number;
+    }
+
     private void check(int number, int selectedNumber) {
-        if (number < selectedNumber) {
-            System.out.println("Введенное число меньше загаданного!");
+        if (number != selectedNumber) {
+            if (number < selectedNumber) {
+                System.out.println("Введенное число меньше загаданного!");
+            } else if (number > selectedNumber) {
+                System.out.println("Введенное число больше загаданного!");
+            }
             check = false;
-        } else if (number > selectedNumber) {
-            System.out.println("Введенное число больше загаданного!");
-            check = false;
+        } else {
+            check = true;
         }
     }
 }
