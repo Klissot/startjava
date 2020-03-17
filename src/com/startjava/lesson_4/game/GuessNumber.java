@@ -18,61 +18,48 @@ public class GuessNumber {
         System.out.println("Компьютер загадал число, попробуйте отгадать");
         System.out.println("Внимание! У вас есть только 10 попыток");
         hidenNumber = (int) (Math.random() * 101);
-        for (int i = 0; i < 10; i++) {
-            player1.setEnteredNumber(i, enterNumber(player1.getName()));
-            if (compareNumbers(player1.getEnteredNumber(i))) {
-                if (compareIndexForWin(i, player1.getName(), player1.getEnteredNumbers(i).length)) {
-                    player1.zeroingOfEnteredNumbers(i);
-                    break;
-                } else {
-                    System.out.println("Игрок " + player1.getName() + " ввел числа: " + Arrays.toString(player1.getEnteredNumbers(i)));
-                    player1.zeroingOfEnteredNumbers(i);
-                    break;
-                }
+        int i;
+        for (i = 0; i < 10; i++) {
+            enterNumber(player1.getName(), i);
+            if (compareNumbers(player1.getEnteredNumber(i), player1.getName(), i)) {
+                break;
             } else {
                 compareIndexForDefeat(i, player1.getName());
             }
-            player2.setEnteredNumber(i, enterNumber(player2.getName()));
-            if (compareNumbers(player2.getEnteredNumber(i))) {
-                if (compareIndexForWin(i, player2.getName(), player2.getEnteredNumbers(i).length)) {
-                    player2.zeroingOfEnteredNumbers(i);
-                    break;
-                } else {
-                    System.out.println("Игрок " + player2.getName() + " ввел числа: " + Arrays.toString(player2.getEnteredNumbers(i)));
-                    player2.zeroingOfEnteredNumbers(i);
-                    break;
-                }
+            enterNumber(player2.getName(), i);
+            if (compareNumbers(player2.getEnteredNumber(i), player2.getName(), i)) {
+                break;
             } else {
                 if (compareIndexForDefeat(i, player2.getName())) {
-                    player1.zeroingOfEnteredNumbers(i);
-                    player2.zeroingOfEnteredNumbers(i);
                     break;
                 }
             }
         }
+        player1.zeroingOfEnteredNumbers(i);
+        player2.zeroingOfEnteredNumbers(i);
     }
 
-    private int enterNumber(String name) {
+    private void enterNumber(String name, int i) {
         System.out.print("Игрок " + name + " введите число: ");
-        return scan.nextInt();
+        if (name.equals(player1.getName())) {
+            player1.setEnteredNumber(i, scan.nextInt());
+        } else if (name.equals(player2.getName())) {
+            player2.setEnteredNumber(i, scan.nextInt());
+        }
     }
 
-    private boolean compareNumbers(int number) {
+    private boolean compareNumbers(int number, String name, int i) {
         if (number != hidenNumber) {
             if (number < hidenNumber) {
                 System.out.println("Введенное число меньше загаданного!");
-            } else if (number > hidenNumber) {
+            } else {
                 System.out.println("Введенное число больше загаданного!");
             }
             return false;
         } else {
+            System.out.println("Поздравляем! Игрок " + name + " угадал число " + hidenNumber + " c " + (i + 1) + " попытки!");
             return true;
         }
-    }
-
-    private boolean compareIndexForWin(int i, String name, int attemt) {
-        System.out.println("Поздравляем! Игрок " + name + " угадал число " + hidenNumber + " c " + attemt + " попытки!");
-        return (i != 9);
     }
 
     private boolean compareIndexForDefeat(int i, String name) {
@@ -90,6 +77,4 @@ public class GuessNumber {
             return false;
         }
     }
-
-
 }
