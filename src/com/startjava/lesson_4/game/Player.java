@@ -21,14 +21,11 @@ public class Player {
 
     public void setEnteredNumber(int i, int number) {
         enteredNumbers[i] = number;
+        attempts = i;
     }
 
     public int getAttempts() {
         return attempts;
-    }
-
-    public void setAttempts(int attempts) {
-        this.attempts = attempts;
     }
 
     public int[] getEnteredNumbers() {
@@ -36,7 +33,6 @@ public class Player {
     }
 
     public void clear() {
-        Arrays.fill(enteredNumbers, 0, attempts - 1 , 0);
+        Arrays.fill(enteredNumbers, 0, attempts, 0);
     }
-
 }
