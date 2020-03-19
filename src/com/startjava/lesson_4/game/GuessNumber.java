@@ -68,6 +68,8 @@ public class GuessNumber {
     }
 
     private void outputEnteredNumbers(Player player) {
-        System.out.println("Игрок " + player.getName() + " ввел числа: " + Arrays.toString(player.getEnteredNumbers()));
+        if (player.getAttempts() > 0) {
+            System.out.println("Игрок " + player.getName() + " ввел числа: " + Arrays.toString(player.getEnteredNumbers()));
+        }
     }
 }

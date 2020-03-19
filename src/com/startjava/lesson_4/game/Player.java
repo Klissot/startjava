@@ -29,7 +29,7 @@ public class Player {
     }
 
     public int[] getEnteredNumbers() {
-        return Arrays.copyOf(enteredNumbers, attempts);
+        return Arrays.copyOf(enteredNumbers, attempts + 1);
     }
 
     public void clear() {
