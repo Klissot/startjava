@@ -21,10 +21,16 @@ public class GuessNumber {
         for (int i = 0; i < 10; i++) {
             if (makeMove(player1, i)) {
                 break;
+            } else {
+                compareAttempts(player1);
             }
+
             if (makeMove(player2, i)) {
                 break;
+            } else {
+                compareAttempts(player2);
             }
+
         }
         outputEnteredNumbers(player1);
         outputEnteredNumbers(player2);
@@ -34,12 +40,7 @@ public class GuessNumber {
 
     private boolean makeMove(Player player, int i) {
         enterNumber(player, i);
-        if (compareNumbers(player)) {
-            return true;
-        } else {
-            compareAttempts(player);
-            return false;
-        }
+        return compareNumbers(player);
     }
 
     private void enterNumber(Player player, int i) {
@@ -68,8 +69,6 @@ public class GuessNumber {
     }
 
     private void outputEnteredNumbers(Player player) {
-        if (player.getAttempts() > 0) {
-            System.out.println("Игрок " + player.getName() + " ввел числа: " + Arrays.toString(player.getEnteredNumbers()));
-        }
+        System.out.println("Игрок " + player.getName() + " ввел числа: " + Arrays.toString(player.getEnteredNumbers()));
     }
 }
